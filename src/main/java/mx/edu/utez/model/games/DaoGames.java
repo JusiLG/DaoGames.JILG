@@ -52,6 +52,39 @@ public class DaoGames {
         return listGames;
     }
 
+    public BeanGames findById(int id){
+        BeanGames games = null;
+        try {
+            con = ConnectionMySQL.getConnection();
+            cstm = con.prepareCall("SELECT * FROM games WHERE idGames = ?;");
+            cstm.setInt(1, id);
+            rs = cstm.executeQuery();
+
+            if(rs.next()){
+                BeanCategory category = new BeanCategory();
+                games = new BeanGames();
+
+                category.setIdCategory(rs.getInt("idCategory"));
+                category.setName(rs.getString("name"));
+                category.setStatus(rs.getInt("status"));
+
+                games.setIdGames(rs.getInt("idGames"));
+                games.setName(rs.getString("name"));
+                games.setImgGame(Base64.getEncoder().encodeToString(rs.getBytes("imgGames")));
+                games.setDatePremiere(rs.getString("date_premiere"));
+                games.setCategory_idCategory(category);
+                games.setStatus(rs.getInt("status"));
+
+                games.setCategory_idCategory(category);
+            }
+        }catch (SQLException e){
+            System.out.println("Ha ocurrido un error: " + e.getMessage());
+        } finally {
+            ConnectionMySQL.closeConnections(con, cstm, rs);
+        }
+        return games;
+    }
+
     public boolean create(BeanGames games){
         boolean flag = false;
         try{
