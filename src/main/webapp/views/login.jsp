@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${context}/assets/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="${context}/assets/dist/css/styles.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
 
     <button type="submit" class="btn btn-success"> Log In </button>
 </form>
-<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="/assets/dist/js/main.js"></script>
+<script src="${context}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${context}/assets/dist/js/main.js"></script>
 </body>
 </html>
