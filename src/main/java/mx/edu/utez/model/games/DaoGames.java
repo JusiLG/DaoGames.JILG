@@ -6,6 +6,7 @@ import mx.edu.utez.service.ConnectionMySQL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.InputStream;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -85,7 +86,7 @@ public class DaoGames {
         return games;
     }
 
-    public boolean create(BeanGames games){
+    public boolean create(BeanGames games, InputStream image){
         boolean flag = false;
         try{
             con = ConnectionMySQL.getConnection();
